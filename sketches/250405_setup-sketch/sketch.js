@@ -1,8 +1,8 @@
 //ref: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
 
-setup();
+main(); //this is the main function, where the main shader code sits. 
 
-function setup() {
+function main() {
   const canvas = document.querySelector("#main-canvas"); //assign 'canvas' to refer to the html-canvas.
   const gl = canvas.getContext("webgl"); //getContext tells the canvas what kind of drawing environment one wants to use.
 
