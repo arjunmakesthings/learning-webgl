@@ -101,6 +101,12 @@ if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
 const drawingProgram = gl.createProgram();
 gl.attachShader(drawingProgram, vertexShader); 
 gl.attachShader(drawingProgram, fragmentShader); 
-
 gl.linkProgram (drawingProgram); 
+
+//to check for linking-errors: 
+if (!gl.getProgramParameter(drawingProgram, gl.LINK_STATUS)){
+  const link_error = gl.getProgramInfoLog(drawingProgram); 
+  console.log(`failed to link shaders - ${link_error}`)
+  return; 
+}
 }
