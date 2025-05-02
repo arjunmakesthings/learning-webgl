@@ -11,7 +11,7 @@ attribute vec2 aTexCoord; //this is for the fragment shader, to draw on the face
 varying vec2 pos; //this will get passed to the fragment shader, and hold pixel coordinates. 
 
 void main(){
-pos = aTexCoord; 
+pos = aTexCoord; //this basically starts from the lower-left corner, because webgl is in uv-space: https://medium.com/@Zadvorsky/into-vertex-shaders-part-1-the-spaces-of-webgl-c70ded527841
 
 vec4 position = vec4(aPosition, 1.0); //take original position from 0,1 range. 
 position.xy = position.xy * 2. -1.; //remap to -1, 1 range. 
