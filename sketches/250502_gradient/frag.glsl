@@ -1,5 +1,10 @@
 precision mediump float;
 
+varying vec2 pos; //read this value from the vertex shader.
+
+uniform float millis; 
+
 void main() {
-  gl_FragColor = vec4(0.2, 0.4, 0.4, 1.0);
+  //color is rgba. 
+  gl_FragColor = vec4(pos.x, pos.y, 1.0, 1.0);
 }

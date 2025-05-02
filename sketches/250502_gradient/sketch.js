@@ -20,8 +20,9 @@ function setup() {
 }
 
 function draw(){
+  shader_1.setUniform("millis", millis()); 
   clear();
 
   //run shader:
-  ellipse(0,0, width, height);
+  rect(0,0, width, height);
 }
