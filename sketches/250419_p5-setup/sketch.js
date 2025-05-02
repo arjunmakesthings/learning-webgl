@@ -1,4 +1,8 @@
-//realised that writing native web-gl shaders is extremely painful. so, resorted to using p5 instead (since it has a bunch of wrappers to make writing shaders a little less tedious.)
+/*
+realised that writing native web-gl shaders is extremely painful. so, resorted to using p5 instead (since it has a bunch of wrappers to make writing shaders a little less tedious.)
+
+tutorial followed: https://www.youtube.com/watch?v=3mfvZ-mdtZQ
+*/
 
 let shader_1; 
 
@@ -18,6 +22,6 @@ function setup() {
 function draw(){
   clear();
 
-  //run shader: 
-  rect(0,0, width, height);
+  //run shader:
+  ellipse(0,0, width, height);
 }
