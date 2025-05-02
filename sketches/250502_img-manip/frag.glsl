@@ -10,56 +10,45 @@ void main() {
 
   //we're going to take an image, flip it from all four directions and then apply some sin transformations. 
 
-  float a = 0.8; //alpha. 
+  float a = 0.25; //alpha. 
+
+  vec2 warped_base_pos = pos + (sin(pos * 16.0))*millis/100000.; 
 
   //straight image: 
   //i'll have to flip pos vertically. 
-  vec2 vert_flipped = pos; 
-  vert_flipped.y = 1. - pos.y; 
+  vec2 vert_flipped = warped_base_pos; 
+  vert_flipped.y = 1. - warped_base_pos.y; 
 
   vec4 tex1 = texture2D (img, vert_flipped); 
 
   // flipped_image: 
-  vec4 tex2 = texture2D (img, pos); 
+  vec4 tex2 = texture2D (img, warped_base_pos); 
 
   //top facing image. 
-  vec2 x_flipped = pos; 
-  x_flipped.x = 1. - pos.x; 
+  vec2 x_flipped = warped_base_pos; 
+  x_flipped.x = 1. - warped_base_pos.x; 
 
   vec4 tex3 = texture2D (img, x_flipped); 
 
     //top facing image. 
-  vec2 y_flipped = pos; 
-  y_flipped.x = 1. - pos.x; 
-  y_flipped.y = 1. - pos.y; 
+  vec2 y_flipped = warped_base_pos; 
+  y_flipped.x = 1. - warped_base_pos.x; 
+  y_flipped.y = 1. - warped_base_pos.y; 
 
   vec4 tex4 = texture2D (img, y_flipped); 
 
   // vec4 col = vec4(tex.r, tex.g, tex.b, a); //we're going to mix colours from all textures, with a so we don't need this. 
 
-  
+  //now we blend these into color. 
 
-  gl_FragColor = vec4(tex4); 
+  vec4 top = mix(tex1, tex2, a); 
+  vec4 bottom = mix(tex3, tex4, a); 
 
+  vec4 all = mix(top, bottom, 0.25); 
+
+  float avg = (all.r + all.g, all.b); 
+
+  gl_FragColor = vec4(avg, avg, avg, 1.0); 
 }
 
-/*
-  //flip pos: 
-  vec2 flipped_pos = pos; 
-  flipped_pos.y = 1. - flipped_pos.y; 
-
-  //try shifting the x's. 
-  float new_x = float(flipped_pos.x + sin (flipped_pos*20.0)); 
-
-  vec2 new_pos = vec2(new_x, flipped_pos.y); 
-
-  // flipped_pos.x = float(flipped_pos.x + (sin(flipped_pos * 20.))); 
-
-  vec4 col = texture2D(img, flipped_pos, 0.5); 
-  vec4 prev_col = texture2D(img, pos, 0.5); 
-
-  vec4 new_col = mix(col, prev_col, 0.5); 
-
-  //color is rgba. 
-  gl_FragColor = vec4(new_col);
-  */
+//vec2 warped_base_pos = pos + (sin(pos * 16.0))*millis/100000.; 

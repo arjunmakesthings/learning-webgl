@@ -7,6 +7,8 @@ tutorial followed: https://www.youtube.com/watch?v=3mfvZ-mdtZQ
 let shader_1; 
 let img; 
 
+let time; 
+
 function preload(){
   shader_1 = loadShader("vert.glsl", "frag.glsl"); //load shader into p5. 
 
@@ -23,6 +25,7 @@ function setup() {
 }
 
 function draw(){
+  time = sin(frameCount); 
   shader_1.setUniform("millis", millis()); 
   shader_1.setUniform("img", img);
   clear();
