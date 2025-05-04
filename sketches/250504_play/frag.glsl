@@ -1,6 +1,6 @@
 precision lowp float;
 
-varying vec2 pos; //read this value from the vertex shader.
+varying vec2 pos; //this is what comes from the vert shader. each pixel on the screen. 
 
 uniform float millis; //takes a variable called millis which uses the p5 millis function. 
 

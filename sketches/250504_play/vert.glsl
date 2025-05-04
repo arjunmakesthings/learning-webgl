@@ -1,10 +1,6 @@
 precision mediump float; //how precise should the float numbers be (1.0 or 1.00230202302). controls precision and speed. 
 
-//a fragment shader only works inside a shape. so, i need to create a shape in my main drawing program (say a full-width rectangle if i don't want any shapes) and then the points of that rectangle are passed to the shader (to do its operations). 
-
-//fragment shaders work on pixels, vertex shaders work on shapes. 
-
-attribute vec3 aPosition; //this takes a value from p5 for each vertex (it runs one time for each vertex). the value is a vector with 3 floats. ok
+attribute vec3 aPosition; //this takes a value from p5 for each vertex (it runs one time for each vertex).
 attribute vec2 aTexCoord; //this is for the fragment shader, to draw on the face of the geometry that is rendered. 
 //^both of these are automatically set by p5 when you draw a shape on the screen. 
 
