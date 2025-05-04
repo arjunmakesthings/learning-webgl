@@ -11,8 +11,6 @@ let time;
 
 function preload(){
   shader_1 = loadShader("vert.glsl", "frag.glsl"); //load shader into p5. 
-
-  img = loadImage ("demo_img.jpg")
 }
 
 function setup() {
@@ -25,9 +23,6 @@ function setup() {
 }
 
 function draw(){
-  time = sin(frameCount); 
-  shader_1.setUniform("millis", millis()); 
-  shader_1.setUniform("img", img);
   clear();
 
   //run shader:
