@@ -20,7 +20,6 @@ function setup() {
 
   //uniforms: 
   main_shader.setUniform('u_resolution', [width, height]) // pass a uniform value to the shader, to convert uv-coordinates (0,1) to px values (o, width / height px). 
-  console.log([width, height]); 
 }
 
 function draw(){
