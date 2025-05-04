@@ -4,13 +4,10 @@ realised that writing native web-gl shaders is extremely painful. so, resorted t
 tutorial followed: https://www.youtube.com/watch?v=3mfvZ-mdtZQ
 */
 
-let shader_1; 
-let img; 
-
-let time; 
+let main_shader; 
 
 function preload(){
-  shader_1 = loadShader("vert.glsl", "frag.glsl"); //load shader into p5. 
+  main_shader = loadShader("vert.glsl", "frag.glsl"); //load shader into p5. 
 }
 
 function setup() {
@@ -18,8 +15,12 @@ function setup() {
   let canvas = createCanvas(600, 800, WEBGL);
   canvas.parent("canvas-container");
 
-  shader(shader_1);
+  shader(main_shader);
   noStroke();
+
+  //uniforms: 
+  main_shader.setUniform('u_resolution', [width, height]) // pass a uniform value to the shader, to convert uv-coordinates (0,1) to px values (o, width / height px). 
+  console.log([width, height]); 
 }
 
 function draw(){
