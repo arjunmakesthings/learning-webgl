@@ -7,11 +7,16 @@ uniform sampler2D u_texture; //render a texture, and use it to sample neighbours
 //sampler allows you to read colour values using texture2D(). 
 
 void main() {
-  vec2 pixel_size = 1.0 / u_resolution; //convert 1 pixel to uv_space units. 
+  //flip vert shader: 
+  vec2 flipped_pos = vec2(pos.x, 1.0 - pos.y);
 
+  vec2 pixel_coordinates = flipped_pos * u_resolution; //convert [0.0, 1.0] values to [w, h] values. 
+
+  if (pixel_coordinates.x < u_resolution.x/2.0){
+    gl_FragColor = vec4 (1.0, 0.0,0.0,1.0); 
+  }
+  else{
+    gl_FragColor = vec4(0.0, 1.0,0.0,1.0); 
+  }
   
-
-
-
-  // gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0); //:output. 
 }
